@@ -56,7 +56,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
       transition={{ duration: 0.5 }}
       className="w-full max-w-7xl mx-auto px-4 py-8 -mt-16 relative z-20"
     >
-      <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 rounded-3xl shadow-2xl p-6 border border-white/20 dark:border-slate-800">
+      <div className="backdrop-blur-xl bg-white rounded-3xl shadow-lg p-6 border border-slate-200">
         {/* Main Search Row */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4">
           {/* Search Input */}
@@ -78,12 +78,14 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                   <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </motion.svg>
               </div>
-              <input
+              <motion.input
                 type="text"
                 placeholder="Search faculty by name, email, or expertise..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 transition-all duration-300"
+                initial={{ opacity: 0.8 }}
+                whileFocus={{ scale: 1.01, boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)" }}
+                className="w-full pl-12 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-slate-900 placeholder-slate-400 transition-all duration-300"
                 aria-label="Search staff members"
               />
               <AnimatePresence>
@@ -93,10 +95,20 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     onClick={() => setSearchQuery("")}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600"
                   >
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </motion.button>
                 )}
@@ -110,7 +122,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="relative w-full px-4 py-3.5 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 appearance-none cursor-pointer transition-all duration-300"
+              className="relative w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white text-slate-900 appearance-none cursor-pointer transition-all duration-300"
               aria-label="Filter by role"
             >
               {roles.map((role) => (
@@ -120,8 +132,18 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="h-5 w-5 text-slate-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -132,7 +154,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
             <select
               value={specializationFilter}
               onChange={(e) => setSpecializationFilter(e.target.value)}
-              className="relative w-full px-4 py-3.5 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 appearance-none cursor-pointer transition-all duration-300"
+              className="relative w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent bg-white text-slate-900 appearance-none cursor-pointer transition-all duration-300"
               aria-label="Filter by specialization"
             >
               {specializations.map((spec) => (
@@ -142,8 +164,18 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="h-5 w-5 text-slate-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -161,7 +193,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
               <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
                 Active filters:
               </span>
-              
+
               {searchQuery && (
                 <motion.span
                   initial={{ scale: 0 }}
@@ -174,13 +206,23 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                     onClick={() => setSearchQuery("")}
                     className="hover:bg-white/20 rounded-full p-0.5 transition-colors"
                   >
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 </motion.span>
               )}
-              
+
               {roleFilter && (
                 <motion.span
                   initial={{ scale: 0 }}
@@ -193,13 +235,23 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                     onClick={() => setRoleFilter("")}
                     className="hover:bg-white/20 rounded-full p-0.5 transition-colors"
                   >
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 </motion.span>
               )}
-              
+
               {specializationFilter && (
                 <motion.span
                   initial={{ scale: 0 }}
@@ -212,13 +264,23 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                     onClick={() => setSpecializationFilter("")}
                     className="hover:bg-white/20 rounded-full p-0.5 transition-colors"
                   >
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 </motion.span>
               )}
-              
+
               <button
                 onClick={clearAllFilters}
                 className="ml-auto text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium transition-colors"

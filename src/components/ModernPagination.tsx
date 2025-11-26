@@ -53,21 +53,34 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-12">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 rounded-2xl shadow-xl border border-white/20 dark:border-slate-800 p-6"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className="backdrop-blur-xl bg-white rounded-2xl shadow-md border border-slate-200 p-6"
       >
         {/* Stats */}
-        <div className="text-center mb-6">
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Showing <span className="font-semibold text-blue-600 dark:text-blue-400">{startItem}</span> to{" "}
-            <span className="font-semibold text-blue-600 dark:text-blue-400">{endItem}</span> of{" "}
-            <span className="font-semibold text-blue-600 dark:text-blue-400">{totalItems}</span> faculty members
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="text-center mb-6"
+        >
+          <p className="text-sm text-slate-600">
+            Showing{" "}
+            <span className="font-semibold text-blue-600">{startItem}</span> to{" "}
+            <span className="font-semibold text-blue-600">{endItem}</span> of{" "}
+            <span className="font-semibold text-blue-600">{totalItems}</span>{" "}
+            faculty members
           </p>
-        </div>
+        </motion.div>
 
         {/* Pagination Controls */}
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
+          className="flex flex-wrap items-center justify-center gap-2"
+        >
           {/* Previous Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -76,30 +89,39 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
             disabled={currentPage === 1}
             className="group relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" />
-            <div className="relative flex items-center gap-2 bg-white dark:bg-slate-800 rounded-xl px-4 py-2 border-2 border-slate-200 dark:border-slate-700 group-hover:border-transparent transition-colors">
+            <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" />
+            <div className="relative flex items-center gap-2 bg-white rounded-xl px-4 py-2 border-2 border-slate-200 group-hover:border-transparent transition-colors">
               <svg
-                className="w-5 h-5 text-slate-600 dark:text-slate-300"
+                className="w-5 h-5 text-slate-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
-              <span className="text-slate-700 dark:text-slate-200">Previous</span>
+              <span className="text-slate-700">Previous</span>
             </div>
+            {/* </div> */}
           </motion.button>
 
           {/* Page Numbers */}
           {getPageNumbers().map((page, idx) => {
             if (page === "...") {
               return (
-                <span
+                <motion.span
                   key={`ellipsis-${idx}`}
-                  className="px-4 py-2.5 text-slate-400 dark:text-slate-500 font-medium"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="px-4 py-2.5 text-slate-400 font-medium"
                 >
                   ...
-                </span>
+                </motion.span>
               );
             }
 
@@ -109,24 +131,27 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
             return (
               <motion.button
                 key={pageNumber}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.04 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onPageChange(pageNumber)}
                 className={`relative px-4 py-2.5 rounded-xl font-semibold transition-all duration-300 ${
-                  isActive ? "text-white" : "text-slate-700 dark:text-slate-300"
+                  isActive ? "text-white" : "text-slate-700"
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activePage"
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg"
+                    className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
                 <div
                   className={`relative ${
                     !isActive &&
-                    "border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-purple-500 rounded-xl px-4 py-2"
+                    "border-2 border-slate-200 bg-white hover:border-blue-400 rounded-xl px-4 py-2"
                   } ${isActive && "px-4 py-2"}`}
                 >
                   {pageNumber}
@@ -143,23 +168,28 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
             disabled={currentPage === totalPages}
             className="group relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" />
-            <div className="relative flex items-center gap-2 bg-white dark:bg-slate-800 rounded-xl px-4 py-2 border-2 border-slate-200 dark:border-slate-700 group-hover:border-transparent transition-colors">
-              <span className="text-slate-700 dark:text-slate-200">Next</span>
+            <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" />
+            <div className="relative flex items-center gap-2 bg-white rounded-xl px-4 py-2 border-2 border-slate-200 group-hover:border-transparent transition-colors">
+              <span className="text-slate-700">Next</span>
               <svg
-                className="w-5 h-5 text-slate-600 dark:text-slate-300"
+                className="w-5 h-5 text-slate-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </div>
           </motion.button>
-        </div>
+        </motion.div>
 
         {/* Quick Jump */}
-        <div className="mt-6 flex items-center justify-center gap-3">
+        {/* <div className="mt-6 flex items-center justify-center gap-3">
           <span className="text-sm text-slate-600 dark:text-slate-400">Jump to page:</span>
           <input
             type="number"
@@ -174,7 +204,7 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
             }}
             className="w-20 px-3 py-2 text-center border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 transition-all"
           />
-        </div>
+        </div> */}
       </motion.div>
     </div>
   );

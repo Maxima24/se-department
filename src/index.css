@@ -48,20 +48,20 @@
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-100 dark:bg-slate-900;
+    @apply bg-white;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-blue-500 to-purple-500 rounded-full;
+    @apply bg-gradient-to-b from-gray-500 to-black/40 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply from-blue-600 to-purple-600;
+    @apply from-gray-600 to-black/40;
   }
 }
 

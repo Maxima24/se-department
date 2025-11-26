@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useId } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import type { StaffMember } from "@/types/stafftypes";
 import { useOutsideClick } from "@/hooks/use-outside-click";
@@ -31,7 +31,7 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
 
-  useOutsideClick(ref, () => setActive(null));
+  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => setActive(null));
 
   return (
     <>
@@ -65,11 +65,14 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
               className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
               <motion.div layoutId={`image-${active.id}-${id}`}>
-                <img
+                <motion.img
                   width={200}
                   height={200}
                   src={active.photo}
                   alt={active.name}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.45 }}
                   className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
                 />
               </motion.div>
@@ -116,8 +119,7 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
                       <div>
                         <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Contact Information</h4>
                         <p className="text-sm">📧 {active.email}</p>
-                        <p className="text-sm">📞 {active.phone}</p>
-                        <p className="text-sm">🏢 {active.office}</p>
+                        <p className="text-sm">📱 {active.phone}</p>
                       </div>
 
                       <div>
@@ -166,11 +168,15 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
           >
             <div className="flex gap-4 flex-col md:flex-row w-full">
               <motion.div layoutId={`image-${member.id}-${id}`}>
-                <img
+                <motion.img
                   width={100}
                   height={100}
                   src={member.photo}
                   alt={member.name}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.35 }}
                   className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
                 />
               </motion.div>

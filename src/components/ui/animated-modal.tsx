@@ -2,13 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
@@ -52,7 +46,7 @@ export const ModalTrigger = ({
   return (
     <button
       className={cn(
-        "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden",
+        "px-4 py-2 rounded-md text-slate-900 text-center relative overflow-hidden",
         className
       )}
       onClick={() => setOpen(true)}
@@ -87,48 +81,39 @@ export const ModalBody = ({
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            backdropFilter: "blur(10px)",
-          }}
-          exit={{
-            opacity: 0,
-            backdropFilter: "blur(0px)",
-          }}
-          className="fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-8"
         >
           <Overlay />
 
           <motion.div
             ref={modalRef}
             className={cn(
-              "min-h-[50%] max-h-[90%] md:max-w-[40%] bg-white dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-50 flex flex-col flex-1 overflow-hidden",
+              "relative z-50 w-full max-w-2xl max-h-[80vh] bg-white rounded-2xl shadow-2xl overflow-hidden",
+              "border border-slate-200",
               className
             )}
             initial={{
               opacity: 0,
-              scale: 0.5,
-              rotateX: 40,
-              y: 40,
+              scale: 0.95,
+              y: 20,
             }}
             animate={{
               opacity: 1,
               scale: 1,
-              rotateX: 0,
               y: 0,
             }}
             exit={{
               opacity: 0,
-              scale: 0.8,
-              rotateX: 10,
+              scale: 0.95,
+              y: 20,
             }}
             transition={{
               type: "spring",
-              stiffness: 260,
-              damping: 15,
+              stiffness: 300,
+              damping: 25,
             }}
           >
             <CloseIcon />
@@ -148,7 +133,12 @@ export const ModalContent = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col flex-1 p-8 md:p-10 overflow-auto", className)}>
+    <div
+      className={cn(
+        "flex flex-col p-6 md:p-8 overflow-y-auto max-h-[calc(80vh-4rem)] bg-white text-slate-900",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -164,7 +154,7 @@ export const ModalFooter = ({
   return (
     <div
       className={cn(
-        "flex justify-end p-4 bg-gray-100 dark:bg-neutral-900",
+        "flex justify-end gap-3 p-6 border-t border-slate-200 bg-slate-50",
         className
       )}
     >
@@ -176,19 +166,11 @@ export const ModalFooter = ({
 const Overlay = ({ className }: { className?: string }) => {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-        backdropFilter: "blur(10px)",
-      }}
-      exit={{
-        opacity: 0,
-        backdropFilter: "blur(0px)",
-      }}
-      className={`fixed inset-0 h-full w-full bg-black bg-opacity-50 z-50 ${className}`}
-    ></motion.div>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={cn("fixed inset-0 bg-black/40 backdrop-blur-sm", className)}
+    />
   );
 };
 
@@ -197,22 +179,21 @@ const CloseIcon = () => {
   return (
     <button
       onClick={() => setOpen(false)}
-      className="absolute top-4 right-4 group z-50"
+      className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-all duration-200 group shadow-md hover:shadow-lg"
       aria-label="Close modal"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-black dark:text-white h-4 w-4 group-hover:scale-125 group-hover:rotate-3 transition duration-200"
+        className="text-slate-600 group-hover:rotate-90 transition-transform duration-200"
       >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M18 6l-12 12" />
         <path d="M6 6l12 12" />
       </svg>

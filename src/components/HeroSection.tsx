@@ -1,15 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 
-export const HeroSection: React.FC<{ staffCount: number }> = ({ staffCount }) => {
+export const HeroSection: React.FC<{ staffCount: number }> = ({
+  staffCount,
+}) => {
   const beamsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!beamsRef.current) return;
-    
+
     const beams = beamsRef.current;
     const colors = ["#3b82f6", "#8b5cf6", "#ec4899", "#10b981"];
-    
+
     for (let i = 0; i < 20; i++) {
       const beam = document.createElement("div");
       beam.className = "absolute w-px opacity-30";
@@ -18,19 +20,24 @@ export const HeroSection: React.FC<{ staffCount: number }> = ({ staffCount }) =>
       beam.style.top = `${Math.random() * 100}%`;
       beam.style.background = colors[Math.floor(Math.random() * colors.length)];
       beam.style.transform = `rotate(${Math.random() * 360}deg)`;
-      beam.style.animation = `pulse ${Math.random() * 3 + 2}s ease-in-out infinite`;
+      beam.style.animation = `pulse ${
+        Math.random() * 3 + 2
+      }s ease-in-out infinite`;
       beams.appendChild(beam);
     }
   }, []);
 
   return (
-    <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+    <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-white">
       {/* Animated Beams Background */}
-      <div ref={beamsRef} className="absolute inset-0 overflow-hidden opacity-20" />
-      
+      <div
+        ref={beamsRef}
+        className="absolute inset-0 overflow-hidden opacity-20"
+      />
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      
+
       {/* Gradient Orbs */}
       <motion.div
         animate={{
@@ -56,7 +63,7 @@ export const HeroSection: React.FC<{ staffCount: number }> = ({ staffCount }) =>
         }}
         className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
       />
-      
+
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-center">
         <motion.div
@@ -66,14 +73,14 @@ export const HeroSection: React.FC<{ staffCount: number }> = ({ staffCount }) =>
         >
           {/* Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
+            className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-blue-600 via-purple-600 to-pink-600"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Faculty Nexus
           </motion.h1>
-          
+
           {/* Subtitle */}
           <motion.div
             className="space-y-2 mb-8"
@@ -81,14 +88,14 @@ export const HeroSection: React.FC<{ staffCount: number }> = ({ staffCount }) =>
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <p className="text-2xl md:text-3xl text-blue-200 font-semibold">
+            <p className="text-2xl md:text-3xl text-blue-600 font-semibold">
               Software Engineering Department
             </p>
-            <p className="text-lg md:text-xl text-slate-300">
+            <p className="text-lg md:text-xl text-slate-600">
               Faculty of Computing Science and Engineering
             </p>
           </motion.div>
-          
+
           {/* Stats */}
           <motion.div
             className="flex flex-wrap items-center justify-center gap-6 mt-10"
@@ -96,32 +103,40 @@ export const HeroSection: React.FC<{ staffCount: number }> = ({ staffCount }) =>
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <div className="backdrop-blur-xl bg-white/10 px-6 py-3 rounded-full border border-white/20">
+            <div className="backdrop-blur-xl bg-white px-6 py-3 rounded-full border border-slate-200">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-ping absolute" />
-                  <div className="w-3 h-3 bg-green-400 rounded-full" />
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-ping absolute" />
+                  <div className="w-3 h-3 bg-green-500 rounded-full" />
                 </div>
-                <span className="text-white font-semibold">{staffCount} Expert Faculty</span>
+                <span className="text-slate-900 font-semibold">
+                  {staffCount} Expert Faculty
+                </span>
               </div>
             </div>
-            <div className="backdrop-blur-xl bg-white/10 px-6 py-3 rounded-full border border-white/20">
-              <span className="text-white font-semibold">🎓 World-Class Education</span>
+            <div className="backdrop-blur-xl bg-blue-50 px-6 py-3 rounded-full border border-blue-200">
+              <span className="text-slate-900 font-semibold">
+                🎓 World-Class Education
+              </span>
             </div>
-            <div className="backdrop-blur-xl bg-white/10 px-6 py-3 rounded-full border border-white/20">
-              <span className="text-white font-semibold">🚀 Innovation Leaders</span>
+            <div className="backdrop-blur-xl bg-purple-50 px-6 py-3 rounded-full border border-purple-200">
+              <span className="text-slate-900 font-semibold">
+                🚀 Innovation Leaders
+              </span>
             </div>
           </motion.div>
-          
+
           {/* Scroll Indicator */}
           <motion.div
             className="mt-16"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <div className="text-slate-400 text-sm mb-2">Explore Our Faculty</div>
+            <div className="text-slate-500 text-sm mb-2">
+              Explore Our Faculty
+            </div>
             <svg
-              className="w-6 h-6 mx-auto text-slate-400"
+              className="w-6 h-6 mx-auto text-slate-500"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"

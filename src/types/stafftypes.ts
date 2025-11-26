@@ -6,14 +6,13 @@ export interface StaffMember {
   photo: string;
   email: string;
   phone: string;
-  office: string;
-  specialization: string[];
   bio: string;
   qualifications: string[];
-  researchInterests: string[];
-  publications: string[];
-  borderColor: string;
-  gradient: string;
+  profileLinks: {
+    label: string;
+    url: string;
+    icon?: string;
+  }[];
 }
 
 export interface FilterOptions {
@@ -22,10 +21,10 @@ export interface FilterOptions {
   specializationFilter: string;
 }
 
-export type RoleType = 
-  | "Dean" 
-  | "Deputy Dean" 
-  | "Professor" 
-  | "Associate Professor" 
-  | "Senior Lecturer" 
+export type RoleType =
+  | "Dean"
+  | "Deputy Dean"
+  | "Professor"
+  | "Associate Professor"
+  | "Senior Lecturer"
   | "Lecturer";

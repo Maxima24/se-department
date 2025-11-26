@@ -22,7 +22,7 @@ export default function App() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -78,7 +78,7 @@ export default function App() {
   // Loading Screen
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -87,34 +87,43 @@ export default function App() {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-20 h-20 mx-auto mb-6 border-4 border-blue-500 border-t-transparent rounded-full"
+            className="w-20 h-20 mx-auto mb-6 border-4 border-blue-600 border-t-transparent rounded-full"
           />
-          <h2 className="text-2xl font-bold text-white mb-2">Faculty Nexus</h2>
-          <p className="text-slate-400">Loading faculty directory...</p>
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">
+            Faculty Nexus
+          </h2>
+          <p className="text-slate-500">Loading faculty directory...</p>
         </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white">
       {/* Hero Section */}
       <HeroSection staffCount={staffData.length} />
 
       {/* Search Bar */}
-      <ModernSearchBar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        roleFilter={roleFilter}
-        setRoleFilter={setRoleFilter}
-        specializationFilter={specializationFilter}
-        setSpecializationFilter={setSpecializationFilter}
-      />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <ModernSearchBar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          roleFilter={roleFilter}
+          setRoleFilter={setRoleFilter}
+          specializationFilter={specializationFilter}
+          setSpecializationFilter={setSpecializationFilter}
+        />
+      </motion.div>
 
       {/* Results Count */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
         className="max-w-7xl mx-auto px-4 mb-8"
       >
         <div className="text-center">
@@ -124,18 +133,18 @@ export default function App() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="text-slate-600 dark:text-slate-400 font-medium"
+              className="text-slate-600 font-medium"
             >
               {filteredStaff.length === 0 ? (
                 "No faculty members found"
               ) : (
                 <>
                   Showing{" "}
-                  <span className="text-blue-600 dark:text-blue-400 font-bold">
+                  <span className="text-blue-600 font-bold">
                     {isMobile ? filteredStaff.length : paginatedStaff.length}
                   </span>{" "}
                   of{" "}
-                  <span className="text-blue-600 dark:text-blue-400 font-bold">
+                  <span className="text-blue-600 font-bold">
                     {filteredStaff.length}
                   </span>{" "}
                   {filteredStaff.length === 1 ? "member" : "members"}
@@ -151,18 +160,20 @@ export default function App() {
         {isMobile ? (
           <motion.div
             key="mobile"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
           >
             <ModernMobileView staff={filteredStaff} />
           </motion.div>
         ) : (
           <motion.div
             key="desktop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
           >
             <ModernStaffGrid staff={paginatedStaff} />
             {filteredStaff.length > 0 && (
@@ -185,11 +196,21 @@ export default function App() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl flex items-center justify-center text-white z-30 hover:shadow-blue-500/50 transition-shadow"
+        className="fixed bottom-8 right-8 w-14 h-14 bg-linear-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl flex items-center justify-center text-white z-30 hover:shadow-blue-500/50 transition-shadow"
         aria-label="Scroll to top"
       >
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 10l7-7m0 0l7 7m-7-7v18"
+          />
         </svg>
       </motion.button>
 

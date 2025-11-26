@@ -75,7 +75,7 @@ export const LinkPreview = ({
     <>
       {isMounted ? (
         <div className="hidden">
-          <img
+          <motion.img
             src={src}
             width={width}
             height={height}
@@ -125,17 +125,20 @@ export const LinkPreview = ({
                   x: translateX,
                 }}
               >
-                <a
+                  <a
                   href={url}
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
                   style={{ fontSize: 0 }}
                 >
-                  <img
+                  <motion.img
                     src={isStatic ? imageSrc : src}
                     width={width}
                     height={height}
                     className="rounded-lg"
                     alt="preview image"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.35 }}
                   />
                 </a>
               </motion.div>
