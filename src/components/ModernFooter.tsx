@@ -33,7 +33,11 @@ export const ModernFooter: React.FC = () => {
               world-class education and cutting-edge research.
             </p>
             <div className="flex gap-3">
-              <LinkPreview url="https://twitter.com" isStatic imageSrc="https://i.pravatar.cc/150?img=1">
+              <LinkPreview
+                url="https://twitter.com"
+                isStatic
+                imageSrc="https://i.pravatar.cc/150?img=1"
+              >
                 <motion.a
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -47,7 +51,11 @@ export const ModernFooter: React.FC = () => {
                   <Twitter className="w-5 h-5" />
                 </motion.a>
               </LinkPreview>
-              <LinkPreview url="https://linkedin.com" isStatic imageSrc="https://i.pravatar.cc/150?img=2">
+              <LinkPreview
+                url="https://linkedin.com"
+                isStatic
+                imageSrc="https://i.pravatar.cc/150?img=2"
+              >
                 <motion.a
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -62,7 +70,11 @@ export const ModernFooter: React.FC = () => {
                   <Linkedin className="w-5 h-5" />
                 </motion.a>
               </LinkPreview>
-              <LinkPreview url="https://facebook.com" isStatic imageSrc="https://i.pravatar.cc/150?img=3">
+              <LinkPreview
+                url="https://facebook.com"
+                isStatic
+                imageSrc="https://i.pravatar.cc/150?img=3"
+              >
                 <motion.a
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -180,7 +192,13 @@ export const ModernFooter: React.FC = () => {
                 "News & Events",
                 "Alumni",
               ].map((link, idx) => (
-                <motion.li key={idx} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }}>
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 }}
+                >
                   <motion.a
                     href="#"
                     whileHover={{ x: 4 }}

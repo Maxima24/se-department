@@ -16,14 +16,14 @@ export const Card = React.memo(
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => (
-      <motion.div
-        className={cn(
-          "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
-          hovered !== null && hovered !== index && "blur-[2px] scale-[0.99]"
-        )}
-        onMouseEnter={() => setHovered(index)}
-        onMouseLeave={() => setHovered(null)}
-      >
+    <motion.div
+      className={cn(
+        "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
+        hovered !== null && hovered !== index && "blur-[2px] scale-[0.99]"
+      )}
+      onMouseEnter={() => setHovered(index)}
+      onMouseLeave={() => setHovered(null)}
+    >
       <motion.img
         src={card.src}
         alt={card.title}
@@ -39,11 +39,14 @@ export const Card = React.memo(
           hovered === index ? "opacity-100" : "opacity-0"
         )}
       >
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
-          animate={hovered === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          animate={
+            hovered === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+          }
           transition={{ duration: 0.3 }}
-          className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-linear-to-b from-neutral-50 to-neutral-200">
+          className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-linear-to-b from-neutral-50 to-neutral-200"
+        >
           {card.title}
         </motion.div>
       </motion.div>

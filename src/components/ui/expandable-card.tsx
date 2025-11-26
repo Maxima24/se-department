@@ -31,7 +31,9 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
 
-  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => setActive(null));
+  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () =>
+    setActive(null)
+  );
 
   return (
     <>
@@ -112,21 +114,30 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
                   >
                     <div className="w-full space-y-4">
                       <div>
-                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Bio</h4>
+                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+                          Bio
+                        </h4>
                         <p className="text-sm">{active.bio}</p>
                       </div>
-                      
+
                       <div>
-                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Contact Information</h4>
+                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+                          Contact Information
+                        </h4>
                         <p className="text-sm">📧 {active.email}</p>
                         <p className="text-sm">📱 {active.phone}</p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Specializations</h4>
+                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+                          Specializations
+                        </h4>
                         <div className="flex flex-wrap gap-2">
                           {active.specialization.map((spec, idx) => (
-                            <span key={idx} className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">
+                            <span
+                              key={idx}
+                              className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs"
+                            >
                               {spec}
                             </span>
                           ))}
@@ -134,7 +145,9 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Qualifications</h4>
+                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+                          Qualifications
+                        </h4>
                         <ul className="list-disc list-inside text-sm space-y-1">
                           {active.qualifications.map((qual, idx) => (
                             <li key={idx}>{qual}</li>
@@ -143,7 +156,9 @@ export function ExpandableCard({ staff }: ExpandableCardProps) {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Research Interests</h4>
+                        <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+                          Research Interests
+                        </h4>
                         <ul className="list-disc list-inside text-sm space-y-1">
                           {active.researchInterests.map((interest, idx) => (
                             <li key={idx}>{interest}</li>

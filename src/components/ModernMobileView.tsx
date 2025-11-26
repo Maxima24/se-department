@@ -32,7 +32,9 @@ export const ModernMobileView: React.FC<ModernMobileViewProps> = ({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
 
-  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => setActive(null));
+  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () =>
+    setActive(null)
+  );
 
   if (staff.length === 0) {
     return (
@@ -98,32 +100,34 @@ export const ModernMobileView: React.FC<ModernMobileViewProps> = ({
                 </svg>
               </motion.button>
 
-            <motion.div
-              ref={ref}
-              layoutId={`card-${active.id}-${id}`}
-              className="w-full max-w-2xl max-h-[75vh] bg-white rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <div className="overflow-y-auto max-h-[75vh]">
-                {/* White Header */}
-                <motion.div
-                  layoutId={`image-${active.id}-${id}`}
-                  className="relative p-6 text-slate-900 bg-white border-b-2 border-slate-200"
-                >
-                  <motion.h2
-                    layoutId={`name-${active.id}-${id}`}
-                    className="text-3xl font-bold mb-2"
+              <motion.div
+                ref={ref}
+                layoutId={`card-${active.id}-${id}`}
+                className="w-full max-w-2xl max-h-[75vh] bg-white rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <div className="overflow-y-auto max-h-[75vh]">
+                  {/* White Header */}
+                  <motion.div
+                    layoutId={`image-${active.id}-${id}`}
+                    className="relative p-6 text-slate-900 bg-white border-b-2 border-slate-200"
                   >
-                    {active.name}
-                  </motion.h2>
-                  <motion.p
-                    layoutId={`role-${active.id}-${id}`}
-                    className="text-lg text-slate-600"
-                  >
-                    {active.role}
-                  </motion.p>
-                  <p className="text-sm text-slate-500">{active.department}</p>
-                </motion.div>                  
-                <motion.div
+                    <motion.h2
+                      layoutId={`name-${active.id}-${id}`}
+                      className="text-3xl font-bold mb-2"
+                    >
+                      {active.name}
+                    </motion.h2>
+                    <motion.p
+                      layoutId={`role-${active.id}-${id}`}
+                      className="text-lg text-slate-600"
+                    >
+                      {active.role}
+                    </motion.p>
+                    <p className="text-sm text-slate-500">
+                      {active.department}
+                    </p>
+                  </motion.div>
+                  <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -173,7 +177,6 @@ export const ModernMobileView: React.FC<ModernMobileViewProps> = ({
                           {active.phone}
                         </span>
                       </div>
-
                     </div>
 
                     <div>
@@ -218,10 +221,10 @@ export const ModernMobileView: React.FC<ModernMobileViewProps> = ({
                       </h3>
                       <div className="space-y-2 flex gap-5">
                         {active.profileLinks.map((link, idx) => (
-                          <LinkPreview 
+                          <LinkPreview
                             key={idx}
-                            url={link.url} 
-                            isStatic 
+                            url={link.url}
+                            isStatic
                             imageSrc={""}
                           >
                             <motion.a
@@ -232,8 +235,18 @@ export const ModernMobileView: React.FC<ModernMobileViewProps> = ({
                               className="flex gap-2 items-center justify-between p-3 rounded-lg text-black font-medium transition-all bg-white border-2 border-slate-300 hover:border-slate-400"
                             >
                               <span className="text-sm">{link.label}</span>
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-6l6 6m0 0l-6 6m6-6H3" />
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-6l6 6m0 0l-6 6m6-6H3"
+                                />
                               </svg>
                             </motion.a>
                           </LinkPreview>

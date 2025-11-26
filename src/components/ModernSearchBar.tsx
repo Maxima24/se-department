@@ -84,7 +84,10 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 initial={{ opacity: 0.8 }}
-                whileFocus={{ scale: 1.01, boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)" }}
+                whileFocus={{
+                  scale: 1.01,
+                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)",
+                }}
                 className="w-full pl-12 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-slate-900 placeholder-slate-400 transition-all duration-300"
                 aria-label="Search staff members"
               />

@@ -14,7 +14,10 @@ interface StaffCardProps {
   index: number;
 }
 
-export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => {
+export const ModernStaffCard: React.FC<StaffCardProps> = ({
+  member,
+  index,
+}) => {
   return (
     <Modal>
       <motion.div
@@ -35,11 +38,8 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
               className="w-full h-full object-cover transition-all duration-500"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-            <div
-              className="absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-semibold text-black bg-white border border-slate-300 backdrop-blur-md shadow-lg"
-            >
+            <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-semibold text-black bg-white border border-slate-300 backdrop-blur-md shadow-lg">
               {member.role}
-
             </div>
           </div>
 
@@ -53,13 +53,21 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
               </p>
 
               <div className="flex items-center gap-2 text-sm text-slate-600 mb-2">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
                 </svg>
                 <span className="truncate text-xs">{member.email}</span>
               </div>
-
-
 
               {/* <div className="flex flex-wrap gap-1.5">
                 {member.specialization.slice(0, 3).map((spec, idx) => (
@@ -79,12 +87,20 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
             </div>
 
             <ModalTrigger className="mt-5  flex justify-center items-center rounded-xl transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] bg-white border-2 border-slate-300 hover:border-slate-400 transition-colors">
-              <span
-                className="flex items-center justify-center gap-2 text-sm font-semibold text-black w-full"
-              >
+              <span className="flex items-center justify-center gap-2 text-sm font-semibold text-black w-full">
                 View Full Profile
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
               </span>
             </ModalTrigger>
@@ -94,18 +110,22 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
 
       <ModalBody>
         <ModalContent>
-          <div
-            className="relative p-8 text-slate-900 bg-white border-b-2 border-slate-200"
-          >
+          <div className="relative p-8 text-slate-900 bg-white border-b-2 border-slate-200">
             <div className="max-w-3xl">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-2">{member.name}</h2>
-                <p className="text-lg md:text-xl text-slate-600 mb-1">{member.role}</p>
-                <p className="text-sm md:text-base text-slate-500">{member.department}</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                  {member.name}
+                </h2>
+                <p className="text-lg md:text-xl text-slate-600 mb-1">
+                  {member.role}
+                </p>
+                <p className="text-sm md:text-base text-slate-500">
+                  {member.department}
+                </p>
               </motion.div>
             </div>
           </div>
@@ -122,24 +142,50 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
                 className="flex items-center gap-3 p-4 bg-linear-to-br from-blue-50 to-blue-100/50 rounded-xl transition-all group border border-blue-100 cursor-none"
               >
                 <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-medium text-blue-600 mb-0.5">Email</p>
-                  <p className="text-sm text-slate-700 truncate">{member.email}</p>
+                  <p className="text-xs font-medium text-blue-600 mb-0.5">
+                    Email
+                  </p>
+                  <p className="text-sm text-slate-700 truncate">
+                    {member.email}
+                  </p>
                 </div>
               </a>
 
               <div className="flex items-center gap-3 p-4 bg-linear-to-br from-purple-50 to-purple-100/50 rounded-xl border border-purple-100">
                 <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-medium text-purple-600 mb-0.5">Phone</p>
+                  <p className="text-xs font-medium text-purple-600 mb-0.5">
+                    Phone
+                  </p>
                   <p className="text-sm text-slate-700">{member.phone}</p>
                 </div>
               </div>
@@ -154,7 +200,9 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
                 <div className="w-1 h-6 rounded-full bg-slate-400" />
                 Biography
               </h3>
-              <p className="text-slate-700 leading-relaxed text-base">{member.bio}</p>
+              <p className="text-slate-700 leading-relaxed text-base">
+                {member.bio}
+              </p>
             </motion.div>
 
             <motion.div
@@ -168,9 +216,20 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {member.qualifications.map((qual, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
-                    <svg className="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  <div
+                    key={idx}
+                    className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200"
+                  >
+                    <svg
+                      className="w-5 h-5 text-green-500 mt-0.5 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span className="text-sm text-slate-700">{qual}</span>
                   </div>
@@ -219,8 +278,18 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({ member, index }) => 
                       className="flex items-center justify-between p-4 rounded-xl text-black font-medium transition-all hover:shadow-lg hover:scale-[1.02] group bg-white border-2 border-slate-300 hover:border-slate-400"
                     >
                       <span className="text-sm">{link.label}</span>
-                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      <svg
+                        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
                       </svg>
                     </a>
                   ))}
