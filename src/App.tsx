@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { staffData } from "./data/staffData";
 import { HeroSection } from "./components/HeroSection";
@@ -40,18 +40,11 @@ export default function App() {
         searchQuery === "" ||
         member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         member.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        member.bio.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        member.specialization.some((spec) =>
-          spec.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        member.bio.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesRole = roleFilter === "" || member.role === roleFilter;
 
-      const matchesSpecialization =
-        specializationFilter === "" ||
-        member.specialization.some((spec) =>
-          spec.toLowerCase().includes(specializationFilter.toLowerCase())
-        );
+      const matchesSpecialization = specializationFilter === "";
 
       return matchesSearch && matchesRole && matchesSpecialization;
     });
@@ -78,7 +71,7 @@ export default function App() {
   // Loading Screen
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-white flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -99,7 +92,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-white">
       {/* Hero Section */}
       <HeroSection staffCount={staffData.length} />
 

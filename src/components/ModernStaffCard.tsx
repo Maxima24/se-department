@@ -26,7 +26,7 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({
         transition={{ duration: 0.4, delay: index * 0.05 }}
         className="h-full"
       >
-        <div className="group relative rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-slate-300 transition-all duration-300 shadow-sm hover:shadow-lg h-full flex flex-col">
+        <div className="group relative rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-slate-300 transition-all duration-300 shadow-sm hover:shadow-md h-full flex flex-col">
           <div className="relative w-full aspect-4/3 overflow-hidden bg-linear-to-br from-slate-50 to-slate-100">
             <motion.img
               src={member.photo}
@@ -35,9 +35,9 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.5, delay: index * 0.02 }}
-              className="w-full h-full object-cover transition-all duration-500"
+              className="w-full h-full object-cover transition-all duration-500 hover:transition-all"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            {/* <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" /> */}
             <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-semibold text-black bg-white border border-slate-300 backdrop-blur-md shadow-lg">
               {member.role}
             </div>
@@ -86,7 +86,7 @@ export const ModernStaffCard: React.FC<StaffCardProps> = ({
               </div> */}
             </div>
 
-            <ModalTrigger className="mt-5  flex justify-center items-center rounded-xl transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] bg-white border-2 border-slate-300 hover:border-slate-400 transition-colors">
+            <ModalTrigger className="mt-5 flex justify-center items-center rounded-xl transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] bg-white border-2 border-slate-300 hover:border-slate-400">
               <span className="flex items-center justify-center gap-2 text-sm font-semibold text-black w-full">
                 View Full Profile
                 <svg

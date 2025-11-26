@@ -5,19 +5,39 @@ import { Twitter, Linkedin, Facebook } from "lucide-react";
 
 export const ModernFooter: React.FC = () => {
   return (
-    <footer className="relative mt-20 bg-gradient-to-br from-slate-100 via-blue-50 to-slate-100 text-slate-900 overflow-hidden">
+    <motion.footer
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="relative mt-20 bg-linear-to-br from-slate-100 via-blue-50 to-slate-100 text-slate-900 overflow-hidden"
+    >
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-size-[4rem_4rem]" />
       </div>
 
       {/* Gradient Orbs */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
+      <motion.div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
           {/* About Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -253,7 +273,7 @@ export const ModernFooter: React.FC = () => {
               </motion.button>
             </form>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <motion.div
@@ -284,7 +304,7 @@ export const ModernFooter: React.FC = () => {
             Empowering the next generation of software engineers 🚀
           </p>
         </motion.div>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   );
 };

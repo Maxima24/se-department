@@ -89,8 +89,8 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
             disabled={currentPage === 1}
             className="group relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" />
-            <div className="relative flex items-center gap-2 bg-white rounded-xl px-4 py-2 border-2 border-slate-200 group-hover:border-transparent transition-colors">
+            {/* <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" /> */}
+            <div className="relative flex items-center gap-2 bg-white rounded-xl px-4 py-2 border-2 border-slate-200 group-hover:border-gray-200 transition-colors">
               <svg
                 className="w-5 h-5 text-slate-600"
                 fill="none"
@@ -106,7 +106,6 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
               </svg>
               <span className="text-slate-700">Previous</span>
             </div>
-            {/* </div> */}
           </motion.button>
 
           {/* Page Numbers */}
@@ -144,7 +143,7 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
                 {isActive && (
                   <motion.div
                     layoutId="activePage"
-                    className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg"
+                    className="absolute inset-0 bg-linear-to-r from-blue-400 to-purple-400 rounded-xl shadow-md"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -166,13 +165,13 @@ export const ModernPagination: React.FC<ModernPaginationProps> = ({
             whileTap={{ scale: 0.95 }}
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="group relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+            className="group relative rounded-xl font-medium transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" />
-            <div className="relative flex items-center gap-2 bg-white rounded-xl px-4 py-2 border-2 border-slate-200 group-hover:border-transparent transition-colors">
+            {/* <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300" /> */}
+            <div className="relative flex items-center gap-2 bg-white rounded-xl px-4 py-2 border-2 border-slate-200 group-hover:border-gray-200 transition-colors">
               <span className="text-slate-700">Next</span>
               <svg
-                className="w-5 h-5 text-slate-600"
+                className="w-5 h-5 text-slate-600 hover:translateX  transition-all duration-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

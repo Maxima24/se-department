@@ -61,7 +61,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4">
           {/* Search Input */}
           <div className="lg:col-span-6 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <motion.svg
@@ -121,7 +121,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
 
           {/* Role Filter */}
           <div className="lg:col-span-3 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
@@ -153,7 +153,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
 
           {/* Specialization Filter */}
           <div className="lg:col-span-3 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-orange-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-orange-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
             <select
               value={specializationFilter}
               onChange={(e) => setSpecializationFilter(e.target.value)}
@@ -202,7 +202,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-medium shadow-lg"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-linear-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-medium shadow-lg"
                 >
                   <span>"{searchQuery}"</span>
                   <button
@@ -231,7 +231,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full text-sm font-medium shadow-lg"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-linear-to-r from-purple-500 to-purple-600 text-white rounded-full text-sm font-medium shadow-lg"
                 >
                   <span>{roleFilter}</span>
                   <button
@@ -260,7 +260,7 @@ export const ModernSearchBar: React.FC<ModernSearchBarProps> = ({
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full text-sm font-medium shadow-lg"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-linear-to-r from-pink-500 to-pink-600 text-white rounded-full text-sm font-medium shadow-lg"
                 >
                   <span>{specializationFilter}</span>
                   <button
